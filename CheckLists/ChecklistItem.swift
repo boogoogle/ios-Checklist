@@ -8,7 +8,25 @@
 
 import Foundation
 
-class ChecklistItem {
+class ChecklistItem: NSObject,NSCoding,NSSecureCoding {
+    static var supportsSecureCoding: Bool = true
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(text, forKey: "Text")
+        coder.encode(checked, forKey: "Checked")
+    }
+    
+    required init?(coder: NSCoder) { // 问号表示init可能会返回失败或者nil
+        text = coder.decodeObject(forKey: "Text") as! String
+        checked = coder.decodeBool(forKey: "Checked")
+        super.init()
+    }
+    override init() {
+        super.init()
+    }
+    
+    
+    
     var text = ""
     var checked = false
     func toggleChecked(){
