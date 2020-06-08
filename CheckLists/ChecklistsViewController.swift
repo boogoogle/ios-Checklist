@@ -146,6 +146,8 @@ class ChecklistsViewController: UITableViewController, ItemDetailViewControllerD
 //            cell.accessoryType = .none
             label.text = ""
         }
+        label.textColor = view.tintColor
+
     }
     func configureText(for cell: UITableViewCell, with item: ChecklistItem){
         let label = cell.viewWithTag(1000) as! UILabel

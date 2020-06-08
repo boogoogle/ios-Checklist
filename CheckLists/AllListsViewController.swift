@@ -161,6 +161,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
 //        }
         dataModel.sortChecklists()
         tableView.reloadData()
+        dismiss(animated: true, completion: nil)
     }
     
     /* UINavigationController 的委托 */

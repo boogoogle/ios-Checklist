@@ -17,7 +17,6 @@
 		F89926162481140E006C1AC1 /* ChecklistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89926152481140E006C1AC1 /* ChecklistsViewController.swift */; };
 		F89926192481140E006C1AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F89926172481140E006C1AC1 /* Main.storyboard */; };
 		F899261B24811410006C1AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F899261A24811410006C1AC1 /* Assets.xcassets */; };
-		F899261E24811410006C1AC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F899261C24811410006C1AC1 /* LaunchScreen.storyboard */; };
 		F89926262484DD52006C1AC1 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89926252484DD51006C1AC1 /* ChecklistItem.swift */; };
 		F89926282484F67C006C1AC1 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89926272484F67C006C1AC1 /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -34,7 +33,6 @@
 		F89926152481140E006C1AC1 /* ChecklistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsViewController.swift; sourceTree = "<group>"; };
 		F89926182481140E006C1AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F899261A24811410006C1AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F899261D24811410006C1AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F899261F24811410006C1AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F89926252484DD51006C1AC1 /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		F89926272484F67C006C1AC1 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
@@ -85,9 +83,8 @@
 				F89926152481140E006C1AC1 /* ChecklistsViewController.swift */,
 				F89926172481140E006C1AC1 /* Main.storyboard */,
 				F899261A24811410006C1AC1 /* Assets.xcassets */,
-				F899261C24811410006C1AC1 /* LaunchScreen.storyboard */,
-				F899261F24811410006C1AC1 /* Info.plist */,
 				F89926252484DD51006C1AC1 /* ChecklistItem.swift */,
+				F899261F24811410006C1AC1 /* Info.plist */,
 				F89926272484F67C006C1AC1 /* ItemDetailViewController.swift */,
 				F81921B42488D57100E40AD9 /* AllListsViewController.swift */,
 				F81921B92489004900E40AD9 /* ListDetailViewController.swift */,
@@ -154,7 +151,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F899261E24811410006C1AC1 /* LaunchScreen.storyboard in Resources */,
 				F899261B24811410006C1AC1 /* Assets.xcassets in Resources */,
 				F89926192481140E006C1AC1 /* Main.storyboard in Resources */,
 			);
@@ -190,14 +186,7 @@
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
-		};
-		F899261C24811410006C1AC1 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F899261D24811410006C1AC1 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 /* End PBXVariantGroup section */
 

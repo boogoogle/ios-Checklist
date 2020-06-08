@@ -12,7 +12,7 @@ class Checklist: NSObject, NSCoding {
     func encode(with coder: NSCoder) {
         coder.encode(name, forKey: "Name")
         coder.encode(items,forKey: "Items")
-        coder.encode(items,forKey: "IconName")
+        coder.encode(iconName,forKey: "IconName")
     }
     
     func countUnCheckedItems() -> Int {
@@ -27,16 +27,23 @@ class Checklist: NSObject, NSCoding {
     var items = [ChecklistItem]()
     var iconName: String
     
-    init(name: String) {
-        self.name = name
-        iconName = "Appointments"
-        super.init()
+//    init(name: String) {
+//        self.name = name
+//        iconName = "Appointments"
+//        super.init()
+//    }
+    
+    
+    // 便利初始化
+    convenience init(name: String){
+        self.init(name: name,iconName: "No Icon")
     }
     init(name: String, iconName: String) {
         self.name = name
         self.iconName = iconName
         super.init()
     }
+    // 从plist文件中读取对象时，用这个方法。
     required init?(coder: NSCoder) {
         name = coder.decodeObject(forKey: "Name") as! String
         items = coder.decodeObject(forKey: "Items") as! [ChecklistItem]

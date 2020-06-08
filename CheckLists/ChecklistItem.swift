@@ -25,6 +25,11 @@ class ChecklistItem: NSObject,NSCoding,NSSecureCoding {
         super.init()
     }
     
+    init(text: String) {
+        self.text = text
+        super.init()
+    }
+    
     
     
     var text = ""
