@@ -15,23 +15,22 @@ class ChecklistsViewController: UITableViewController, ItemDetailViewControllerD
     }
     
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem) {
-        let newRowIndex = items.count
-        items.append(item)
+        let newRowIndex = checklist.items.count
+        checklist.items.append(item)
         let indexPath = IndexPath(row: newRowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
-        saveChecklistItems()
+        
         dismiss(animated: true, completion: nil)
     }
     func itemDetailViewController(_ controller: ItemDetailViewController, didiFinishEditing item: ChecklistItem) {
         
-        if let index = items.firstIndex(of: item){
+        if let index = checklist.items.firstIndex(of: item){ // [T]firstIndex(of: T)只能是相同的类型的元素
 //            print(index,"item index")
             let indexPath = IndexPath(row: index, section: 0)
             if let cell = tableView.cellForRow(at: indexPath){
                 configureText(for: cell, with: item)
             }
-            saveChecklistItems()
         }
         dismiss(animated: true, completion: nil)
     }
@@ -50,7 +49,7 @@ class ChecklistsViewController: UITableViewController, ItemDetailViewControllerD
 //        // 因为insertRows的at参数要求一个数组,所以上面构造了一个数组
 //        tableView.insertRows(at: indexPaths, with: .automatic)// automatic tableView插入新行时的动画
 //    }
-    var items: [ChecklistItem]
+//    var items: [ChecklistItem]
     //这一行声明了items会用来存储一个ChecklistItem对象的数组
     //但是它并没有实际创建一个数组
     //在这一时刻，items还没有值
@@ -60,10 +59,10 @@ class ChecklistsViewController: UITableViewController, ItemDetailViewControllerD
     // 使用!标识这个变量一定是Checklist类型
     
     
-    required init?(coder aDecoder: NSCoder) { // TODO 这个是啥?
-        items = [ChecklistItem]()
-        //这一行实例化了这个数组。现在items包含了一个有效的数组对象
-        //但是这个数组内部还不存在ChecklistItem对象
+//    required init?(coder aDecoder: NSCoder) { // TODO 这个是啥?
+        // items = [ChecklistItem]()
+        // 这一行实例化了这个数组。现在items包含了一个有效的数组对象
+        // 但是这个数组内部还不存在 ChecklistItem 对象
         
 //        for i in 0..<10 {
 //            let row0item = ChecklistItem()
@@ -72,11 +71,10 @@ class ChecklistsViewController: UITableViewController, ItemDetailViewControllerD
 //            items.append(row0item)
 //        }
        
-        super.init(coder: aDecoder)
-        loadChecklistItems()
+//        super.init(coder: aDecoder)
 //        print("Documents folder is \(documentsDirectory())")
 //        print("Data file path is \(dataFilePath())")
-    }
+//    }
     
     // 转场时被UIKit 调用
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -90,7 +88,7 @@ class ChecklistsViewController: UITableViewController, ItemDetailViewControllerD
             controller.delegate = self
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                controller.itemToEdit = items[indexPath.row]
+                controller.itemToEdit = checklist.items[indexPath.row]
             }
         }
     }
@@ -112,12 +110,12 @@ class ChecklistsViewController: UITableViewController, ItemDetailViewControllerD
      
      */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return checklist.items.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
         // 获取一个prototype cell 的拷贝, 通过indexPath, 这是标准cell
-        let item = items[indexPath.row]
+        let item = checklist.items[indexPath.row]
         configureText(for: cell, with: item)
         configureCheckmark(for: cell, with: item)
         
@@ -125,18 +123,18 @@ class ChecklistsViewController: UITableViewController, ItemDetailViewControllerD
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath){
-            let item = items[indexPath.row]
+            let item = checklist.items[indexPath.row]
             item.toggleChecked()
             configureCheckmark(for: cell, with: item)
-            saveChecklistItems()
+            
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        items.remove(at: indexPath.row)
+        checklist.items.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
-        saveChecklistItems()
+        
     }
     
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
@@ -154,45 +152,6 @@ class ChecklistsViewController: UITableViewController, ItemDetailViewControllerD
         label.text = item.text
     }
     
-    func documentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    func dataFilePath() -> URL {
-        return documentsDirectory().appendingPathComponent("Checklists.plist")
-    }
-    func saveChecklistItems(){
-//        let data = NSMutableData()
-        do{
-            print(items)
-            let archiverData = try? NSKeyedArchiver.archivedData(withRootObject: items, requiringSecureCoding: true)
-            try archiverData?.write(to: dataFilePath())
-        }catch {
-            print("save2file error: \(error)")
-        }
-    }
-    
-    func loadChecklistItems(){
-        let path = dataFilePath()
-        print(path)
-        
-        if let data = try?Data(contentsOf: path) {
-//            let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
-//            items = unarchiver.decodeObject(forKey: "ChecklistItems") as! [ChecklistItem]
-//            unarchiver.finishDecoding()
-            // 上面的api过时了, 参考这里https://www.swiftdevcenter.com/save-and-get-objects-using-nskeyedarchiver-and-nskeyedunarchiver-swift-5/
-            do{
-                print("data", data)
-                let iis = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [ChecklistItem]
-                items = iis
-//                print(iis)
-            } catch {
-                print(error)
-            }
-            
-            
-        }
-        
-    }
+
 }
 

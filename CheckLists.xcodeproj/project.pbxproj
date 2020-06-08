@@ -10,6 +10,8 @@
 		F81921B52488D57100E40AD9 /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81921B42488D57100E40AD9 /* AllListsViewController.swift */; };
 		F81921B82488EF7D00E40AD9 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81921B72488EF7D00E40AD9 /* Checklist.swift */; };
 		F81921BA2489004900E40AD9 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81921B92489004900E40AD9 /* ListDetailViewController.swift */; };
+		F81921BC248A28B200E40AD9 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81921BB248A28B200E40AD9 /* DataModel.swift */; };
+		F81921BE248E1E8000E40AD9 /* IconPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81921BD248E1E8000E40AD9 /* IconPickerViewController.swift */; };
 		F89926122481140E006C1AC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89926112481140E006C1AC1 /* AppDelegate.swift */; };
 		F89926142481140E006C1AC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89926132481140E006C1AC1 /* SceneDelegate.swift */; };
 		F89926162481140E006C1AC1 /* ChecklistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89926152481140E006C1AC1 /* ChecklistsViewController.swift */; };
@@ -24,6 +26,8 @@
 		F81921B42488D57100E40AD9 /* AllListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListsViewController.swift; sourceTree = "<group>"; };
 		F81921B72488EF7D00E40AD9 /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
 		F81921B92489004900E40AD9 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
+		F81921BB248A28B200E40AD9 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		F81921BD248E1E8000E40AD9 /* IconPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerViewController.swift; sourceTree = "<group>"; };
 		F899260E2481140E006C1AC1 /* CheckLists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckLists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89926112481140E006C1AC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F89926132481140E006C1AC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				F81921B72488EF7D00E40AD9 /* Checklist.swift */,
+				F81921BB248A28B200E40AD9 /* DataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -86,6 +91,7 @@
 				F89926272484F67C006C1AC1 /* ItemDetailViewController.swift */,
 				F81921B42488D57100E40AD9 /* AllListsViewController.swift */,
 				F81921B92489004900E40AD9 /* ListDetailViewController.swift */,
+				F81921BD248E1E8000E40AD9 /* IconPickerViewController.swift */,
 			);
 			path = CheckLists;
 			sourceTree = "<group>";
@@ -164,11 +170,13 @@
 				F89926282484F67C006C1AC1 /* ItemDetailViewController.swift in Sources */,
 				F81921BA2489004900E40AD9 /* ListDetailViewController.swift in Sources */,
 				F89926162481140E006C1AC1 /* ChecklistsViewController.swift in Sources */,
+				F81921BE248E1E8000E40AD9 /* IconPickerViewController.swift in Sources */,
 				F89926122481140E006C1AC1 /* AppDelegate.swift in Sources */,
 				F89926142481140E006C1AC1 /* SceneDelegate.swift in Sources */,
 				F89926262484DD52006C1AC1 /* ChecklistItem.swift in Sources */,
 				F81921B52488D57100E40AD9 /* AllListsViewController.swift in Sources */,
 				F81921B82488EF7D00E40AD9 /* Checklist.swift in Sources */,
+				F81921BC248A28B200E40AD9 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

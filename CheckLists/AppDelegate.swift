@@ -11,12 +11,19 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // 在App一启动的时候调用
+        
+        
+        
+        
+        
         // Override point for customization after application launch.
         return true
     }
+    
 
     // MARK: UISceneSession Lifecycle
 
