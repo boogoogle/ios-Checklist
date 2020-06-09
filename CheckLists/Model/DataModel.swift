@@ -29,7 +29,10 @@ class DataModel {
     }
     
     func registerDefaults(){
-        let dictionary: [String: Any] = ["ChecklistIndex": -1, "FirstTime": true]
+        let dictionary: [String: Any] = [
+            "ChecklistIndex": -1,
+            "FirstTime": true,
+            "ChecklistItemId": 0]
         UserDefaults.standard.register(defaults: dictionary )
     }
     func handleFirstTime(){
@@ -86,9 +89,16 @@ class DataModel {
             } catch {
                 print(error)
             }
-            
-            
         }
-        
+    }
+    
+    
+    // class 关键字意味着你可以在不引用DataModel的前提下,调用这个方法
+    class func nextChecklistItemID() -> Int {
+        let uds = UserDefaults.standard
+        let itemID = uds.integer(forKey: "ChecklistItemID")
+        uds.set(itemID + 1, forKey: "ChecklistItemID")
+        uds.synchronize()
+        return itemID
     }
 }
